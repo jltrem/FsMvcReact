@@ -1,4 +1,5 @@
 const CopyPlugin = require('copy-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     mode: "production",
@@ -29,6 +30,7 @@ module.exports = {
 
 
     plugins: [
+        new CleanWebpackPlugin(),
         new CopyPlugin([
             './node_modules/react/**',
             './node_modules/react-dom/**',
