@@ -1,3 +1,5 @@
+const CopyPlugin = require('copy-webpack-plugin')
+
 module.exports = {
     mode: "production",
 
@@ -12,12 +14,26 @@ module.exports = {
     output: {
         filename: '[name].js',
         path: __dirname + '/wwwroot/dist'
-    },      
+    }, 
+
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+        },
+    },    
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
         extensions: [".ts", ".tsx"]
     },
+
+
+    plugins: [
+        new CopyPlugin([
+            './node_modules/react/**',
+            './node_modules/react-dom/**',
+          ])
+    ],
 
     module: {
         rules: [
